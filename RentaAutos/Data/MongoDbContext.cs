@@ -22,7 +22,7 @@ namespace RentaAutos.Data
             // En lugar de usar el formato '+srv' (que causa bloqueos de resolución DNS en Android),
             // declaramos explícitamente los 3 nodos (shards) del Replica Set de Atlas. 
             // Esto garantiza que si el nodo 00 cae, la app salte al 01 o 02 automáticamente sin crashear.
-            string connectionUri = "mongodb://carloscuadras:12345@ac-n9jd9a9-shard-00-00.tugsfp4.mongodb.net:27017,ac-n9jd9a9-shard-00-01.tugsfp4.mongodb.net:27017,ac-n9jd9a9-shard-00-02.tugsfp4.mongodb.net:27017/RentaCarrosDB?replicaSet=atlas-9hjbgd-shard-0&ssl=true&authSource=admin";
+            string connectionUri = "Conexion a la base de datos en mongo DB";
 
             // Parseamos el string larguísimo para que el driver de Mongo entienda las credenciales y el SSL
             var settings = MongoClientSettings.FromConnectionString(connectionUri);
