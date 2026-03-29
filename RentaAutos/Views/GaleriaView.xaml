@@ -1,0 +1,181 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentaAutos.Views.GaleriaView"
+             Title=""
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#080C14">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#080C14" Offset="0.0"/>
+            <GradientStop Color="#0D1420" Offset="0.5"/>
+            <GradientStop Color="#060A12" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Grid Grid.Row="0" Padding="28,58,28,0" ColumnDefinitions="*,Auto">
+
+            <VerticalStackLayout Grid.Column="0" Spacing="6">
+
+                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                    <BoxView WidthRequest="22" HeightRequest="2" VerticalOptions="Center" CornerRadius="1">
+                        <BoxView.Color>
+                            <Color>#C9A84C</Color>
+                        </BoxView.Color>
+                    </BoxView>
+                    <Label Text="CARROS PREMIUM" FontSize="11" FontAttributes="Bold" CharacterSpacing="3" TextColor="#C9A84C"/>
+                </HorizontalStackLayout>
+
+                <Label Text="Elige tu&#10;Vehículo" FontSize="34" FontAttributes="Bold" LineHeight="1.1" TextColor="#F0F4FF"/>
+                <Label Text="Experiencias de conducción sin igual" FontSize="13" TextColor="#4A5568" Margin="0,2,0,0"/>
+            </VerticalStackLayout>
+
+            <Border Grid.Column="1" WidthRequest="46" HeightRequest="46" VerticalOptions="Start" StrokeThickness="1" Stroke="#1E2A3A">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#141C28" Offset="0.0"/>
+                        <GradientStop Color="#0E1520" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="13"/>
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="#C9A84C" Offset="0,0" Radius="12" Opacity="0.15"/>
+                </Border.Shadow>
+                <Label Text="✦" FontSize="18" TextColor="#C9A84C" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Border>
+        </Grid>
+
+        <CollectionView Grid.Row="1" x:Name="ListaAutos" Margin="0,16,0,0" BackgroundColor="Transparent" SelectionMode="Single" SelectionChanged="OnAutoSeleccionado">
+
+            <CollectionView.Header>
+                <ContentView HeightRequest="6" BackgroundColor="Transparent"/>
+            </CollectionView.Header>
+            <CollectionView.Footer>
+                <ContentView HeightRequest="30" BackgroundColor="Transparent"/>
+            </CollectionView.Footer>
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="0"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="24,0,24,18">
+
+                        <Border Stroke="{Binding ColorBorde}" StrokeThickness="1" Padding="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="22"/>
+                            </Border.StrokeShape>
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0.3,1">
+                                    <GradientStop Color="{Binding ColorFondo}" Offset="0.0"/>
+                                    <GradientStop Color="#0D1520" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Border.Shadow>
+                                <Shadow Brush="#000000" Offset="0,8" Radius="24" Opacity="0.5"/>
+                            </Border.Shadow>
+
+                            <Grid RowDefinitions="200,Auto">
+
+                                <Grid Grid.Row="0" HeightRequest="200">
+                                    <Border StrokeThickness="0" Padding="0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="22,22,0,0"/>
+                                        </Border.StrokeShape>
+                                        <Border.Background>
+                                            <SolidColorBrush Color="#141C28"/>
+                                        </Border.Background>
+
+                                        <Image Source="{Binding imagen_url}" Aspect="AspectFill" HeightRequest="200" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                                    </Border>
+
+                                    <Grid VerticalOptions="End" HeightRequest="90">
+                                        <Grid.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                <GradientStop Color="#000D1520" Offset="0.0"/>
+                                                <GradientStop Color="#FF0D1520" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Grid.Background>
+                                    </Grid>
+
+                                    <Border Margin="14,14,0,0" HorizontalOptions="Start" VerticalOptions="Start" StrokeThickness="1" Stroke="{Binding ColorBorde}" Padding="10,5">
+                                        <Border.Background>
+                                            <SolidColorBrush Color="#CC080C14"/>
+                                        </Border.Background>
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="20"/>
+                                        </Border.StrokeShape>
+                                        <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                                            <Ellipse WidthRequest="6" HeightRequest="6" VerticalOptions="Center">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="{Binding ColorEstado}"/>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Label Text="{Binding TextoEstado}" FontSize="10" FontAttributes="Bold" CharacterSpacing="1.5" TextColor="{Binding ColorEstado}" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                    </Border>
+
+                                    <Border Margin="0,14,14,0" HorizontalOptions="End" VerticalOptions="Start" StrokeThickness="0" Padding="9,5">
+                                        <Border.Background>
+                                            <SolidColorBrush Color="#AA080C14"/>
+                                        </Border.Background>
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"/>
+                                        </Border.StrokeShape>
+                                        <Label Text="{Binding año}" FontSize="11" FontAttributes="Bold" TextColor="#8899AA" CharacterSpacing="1"/>
+                                    </Border>
+                                </Grid>
+
+                                <Grid Grid.Row="1" Padding="20,16,20,20" RowDefinitions="Auto, Auto, Auto">
+
+                                    <VerticalStackLayout Grid.Row="0" Spacing="3">
+                                        <Label Text="{Binding marca}" FontSize="20" FontAttributes="Bold" CharacterSpacing="0.5" TextColor="#EDF2FF"/>
+                                        <Label Text="{Binding modelo}" FontSize="13" TextColor="#5A6A80" CharacterSpacing="0.3"/>
+                                    </VerticalStackLayout>
+
+                                    <BoxView Grid.Row="1" HeightRequest="1" Margin="-20,16,-20,16" Opacity="0.35">
+                                        <BoxView.Color>
+                                            <Color>#1E2A3A</Color>
+                                        </BoxView.Color>
+                                    </BoxView>
+
+                                    <Grid Grid.Row="2" ColumnDefinitions="*,Auto" VerticalOptions="Center">
+
+                                        <VerticalStackLayout Grid.Column="0" Spacing="1" VerticalOptions="Center">
+                                            <Label Text="PRECIO POR DÍA" FontSize="9" CharacterSpacing="2" TextColor="#3D4F65"/>
+                                            <Label Text="{Binding precio_por_dia, StringFormat='${0:N2}'}" FontSize="24" FontAttributes="Bold" TextColor="#C9A84C"/>
+                                        </VerticalStackLayout>
+
+                                        <Border Grid.Column="1" WidthRequest="42" HeightRequest="42" VerticalOptions="Center" StrokeThickness="1" Stroke="#C9A84C">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                    <GradientStop Color="#1C1608" Offset="0.0"/>
+                                                    <GradientStop Color="#2A1F0A" Offset="1.0"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="13"/>
+                                            </Border.StrokeShape>
+                                            <Border.Shadow>
+                                                <Shadow Brush="#C9A84C" Offset="0,2" Radius="10" Opacity="0.3"/>
+                                            </Border.Shadow>
+                                            <Label Text="→" FontSize="18" TextColor="#C9A84C" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        </Border>
+                                    </Grid>
+
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

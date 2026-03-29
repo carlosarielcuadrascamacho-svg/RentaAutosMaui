@@ -1,0 +1,215 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Toolkit.Calendar;assembly=Syncfusion.Maui.Toolkit"
+             x:Class="RentaAutos.Views.RegistroRentaView"
+             Title=""
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#080C14">
+
+    <ContentPage.Resources>
+        <LinearGradientBrush x:Key="CardGradient" StartPoint="0,0" EndPoint="0.3,1">
+            <GradientStop Color="#111827" Offset="0.0" />
+            <GradientStop Color="#0D1520" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="GoldSeparator" StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Color="Transparent" Offset="0.0"/>
+            <GradientStop Color="#1E2A3A" Offset="0.3"/>
+            <GradientStop Color="#C9A84C" Offset="0.5"/>
+            <GradientStop Color="#1E2A3A" Offset="0.7"/>
+            <GradientStop Color="Transparent" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Resources>
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#080C14" Offset="0.0"/>
+            <GradientStop Color="#0D1420" Offset="0.5"/>
+            <GradientStop Color="#060A12" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Grid Grid.Row="0" Padding="28,58,28,0" ColumnDefinitions="*,Auto">
+            <VerticalStackLayout Grid.Column="0" Spacing="6">
+                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                    <BoxView WidthRequest="22" HeightRequest="2" VerticalOptions="Center" CornerRadius="1">
+                        <BoxView.Color>
+                            <Color>#C9A84C</Color>
+                        </BoxView.Color>
+                    </BoxView>
+                    <Label Text="EXECUTIVE RENTAL" FontSize="11" FontAttributes="Bold" CharacterSpacing="3" TextColor="#C9A84C"/>
+                </HorizontalStackLayout>
+
+                <Label Text="Nueva&#10;Renta" FontSize="34" FontAttributes="Bold" LineHeight="1.1" TextColor="#F0F4FF"/>
+                <Label Text="Generación de expediente y cotización" FontSize="13" TextColor="#4A5568" Margin="0,2,0,0"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <ScrollView Grid.Row="1" Margin="0,16,0,0">
+            <VerticalStackLayout Padding="24,0,24,30" Spacing="24">
+
+                <Border Stroke="#1A2535" StrokeThickness="1" Padding="0" Background="{StaticResource CardGradient}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22"/>
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000000" Offset="0,8" Radius="24" Opacity="0.5"/>
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Padding="22" Spacing="18">
+                        <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                            <Border Stroke="#C9A84C" StrokeThickness="1" WidthRequest="26" HeightRequest="26" StrokeShape="RoundRectangle 13" BackgroundColor="#1A150A">
+                                <Label Text="①" TextColor="#C9A84C" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Label Text="VEHÍCULO SELECCIONADO" TextColor="#EDF2FF" FontSize="12" VerticalOptions="Center" FontAttributes="Bold" CharacterSpacing="1.5"/>
+                        </HorizontalStackLayout>
+
+                        <Grid ColumnDefinitions="90,*" ColumnSpacing="15">
+                            <Border Grid.Column="0" Stroke="#1E2A3A" StrokeThickness="1" StrokeShape="RoundRectangle 16" HeightRequest="90" WidthRequest="90" BackgroundColor="#060A12" VerticalOptions="Center">
+                                <Image x:Name="imgAuto" Aspect="AspectFill" />
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                                <Label x:Name="lblMarcaModelo" Text="Ningún auto seleccionado" FontSize="16" FontAttributes="Bold" TextColor="#EDF2FF" LineBreakMode="TailTruncation"/>
+
+                                <HorizontalStackLayout Spacing="10" Margin="0,2,0,0">
+                                    <Border BackgroundColor="#060A12" StrokeThickness="0" StrokeShape="RoundRectangle 6" Padding="8,4">
+                                        <Label x:Name="lblPlacas" Text="---" FontSize="11" TextColor="#8899AA" FontAttributes="Bold" CharacterSpacing="1"/>
+                                    </Border>
+                                    <Label x:Name="lblDetallesExtra" Text="Año: ---" FontSize="12" TextColor="#5A6A80" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+
+                                <Label x:Name="lblPrecio" Text="$0.00 / día" FontSize="18" FontAttributes="Bold" TextColor="#C9A84C" Margin="0,6,0,0"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Stroke="#1A2535" StrokeThickness="1" Padding="0" Background="{StaticResource CardGradient}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22"/>
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000000" Offset="0,8" Radius="24" Opacity="0.5"/>
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Padding="22" Spacing="18">
+                        <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                            <Border Stroke="#C9A84C" StrokeThickness="1" WidthRequest="26" HeightRequest="26" StrokeShape="RoundRectangle 13" BackgroundColor="#1A150A">
+                                <Label Text="②" TextColor="#C9A84C" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Label Text="DATOS DEL CLIENTE" TextColor="#EDF2FF" FontSize="12" VerticalOptions="Center" FontAttributes="Bold" CharacterSpacing="1.5"/>
+                        </HorizontalStackLayout>
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="TELÉFONO (BÚSQUEDA AUTOMÁTICA)" FontSize="10" FontAttributes="Bold" TextColor="#5A6A80" Margin="4,0" CharacterSpacing="1"/>
+                            <Border x:Name="borderTelefono" Stroke="#C9A84C" StrokeThickness="1.5" StrokeShape="RoundRectangle 14" Padding="2">
+                                <Border.Shadow>
+                                    <Shadow Brush="#C9A84C" Opacity="0.15" Radius="15" Offset="0,0"/>
+                                </Border.Shadow>
+                                <Border BackgroundColor="#060A12" StrokeShape="RoundRectangle 12" Padding="14,4">
+                                    <Entry x:Name="txtTelefono" Placeholder="10 dígitos numéricos" Keyboard="Telephone" TextColor="#C9A84C" PlaceholderColor="#3D4F65" BackgroundColor="Transparent" Unfocused="OnTelefonoUnfocused" MaxLength="10" FontSize="15" FontAttributes="Bold"/>
+                                </Border>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="NOMBRE COMPLETO" FontSize="10" FontAttributes="Bold" TextColor="#5A6A80" Margin="4,0" CharacterSpacing="1"/>
+                            <Border Stroke="#1E2A3A" StrokeThickness="1" StrokeShape="RoundRectangle 12" BackgroundColor="#060A12" Padding="14,4">
+                                <Entry x:Name="txtNombreCliente" Placeholder="Ej. Graciela Lugo" TextColor="#EDF2FF" PlaceholderColor="#3D4F65" BackgroundColor="Transparent" FontSize="15"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                            <VerticalStackLayout Grid.Column="0" Spacing="6">
+                                <Label Text="CORREO" FontSize="10" FontAttributes="Bold" TextColor="#5A6A80" Margin="4,0" CharacterSpacing="1"/>
+                                <Border Stroke="#1E2A3A" StrokeThickness="1" StrokeShape="RoundRectangle 12" BackgroundColor="#060A12" Padding="14,4">
+                                    <Entry x:Name="txtCorreo" Placeholder="correo@mail.com" Keyboard="Email" TextColor="#EDF2FF" PlaceholderColor="#3D4F65" BackgroundColor="Transparent" FontSize="14"/>
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="6">
+                                <Label Text="NO. LICENCIA" FontSize="10" FontAttributes="Bold" TextColor="#5A6A80" Margin="4,0" CharacterSpacing="1"/>
+                                <Border Stroke="#1E2A3A" StrokeThickness="1" StrokeShape="RoundRectangle 12" BackgroundColor="#060A12" Padding="14,4">
+                                    <Entry x:Name="txtLicencia" Placeholder="Licencia" TextColor="#EDF2FF" PlaceholderColor="#3D4F65" BackgroundColor="Transparent" FontSize="14"/>
+                                </Border>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Stroke="#1A2535" StrokeThickness="1" Padding="0" Background="{StaticResource CardGradient}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22"/>
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000000" Offset="0,8" Radius="24" Opacity="0.5"/>
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Padding="22" Spacing="18">
+                        <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                            <Border Stroke="#C9A84C" StrokeThickness="1" WidthRequest="26" HeightRequest="26" StrokeShape="RoundRectangle 13" BackgroundColor="#1A150A">
+                                <Label Text="③" TextColor="#C9A84C" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Label Text="PERÍODO DE RENTA" TextColor="#EDF2FF" FontSize="12" VerticalOptions="Center" FontAttributes="Bold" CharacterSpacing="1.5"/>
+                        </HorizontalStackLayout>
+
+                        <Border Stroke="#1E2A3A" StrokeThickness="1" StrokeShape="RoundRectangle 16" BackgroundColor="#060A12" Padding="10">
+                            <syncfusion:SfCalendar x:Name="CalendarioRenta" 
+                                                   SelectionMode="Range" 
+                                                   HeightRequest="330"
+                                                   SelectionChanged="OnCalendarSelectionChanged">
+                            </syncfusion:SfCalendar>
+                        </Border>
+
+                        <Border BackgroundColor="#060A12" Stroke="#C9A84C" StrokeThickness="0.5" StrokeShape="RoundRectangle 16" Padding="18" Margin="0,4,0,0">
+                            <Grid ColumnDefinitions="Auto, *">
+                                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="2">
+                                    <Label Text="DÍAS DE RENTA" FontSize="10" FontAttributes="Bold" TextColor="#5A6A80" CharacterSpacing="1"/>
+                                    <HorizontalStackLayout Spacing="6" VerticalOptions="Center">
+                                        <Label Text="✦" TextColor="#C9A84C" FontSize="12" VerticalOptions="Center"/>
+                                        <Label x:Name="lblDiasCalculados" Text="0 días" FontSize="20" FontAttributes="Bold" TextColor="#EDF2FF" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Spacing="2">
+                                    <Label Text="COSTO TOTAL" FontSize="10" FontAttributes="Bold" TextColor="#5A6A80" HorizontalOptions="End" CharacterSpacing="1"/>
+                                    <Label x:Name="lblCostoTotal" Text="$0.00" FontSize="26" FontAttributes="Bold" TextColor="#C9A84C" HorizontalOptions="End"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+
+                <BoxView HeightRequest="1" Background="{StaticResource GoldSeparator}" Margin="20,10,20,10"/>
+
+                <Border Stroke="#C9A84C" StrokeThickness="1" HeightRequest="60" Margin="0,0,0,20">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1C1608" Offset="0.0"/>
+                            <GradientStop Color="#080C14" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16"/>
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#C9A84C" Offset="0,4" Radius="15" Opacity="0.25"/>
+                    </Border.Shadow>
+
+                    <Button x:Name="btnConfirmarRenta"
+                            Text="CONFIRMAR Y GUARDAR RENTA"
+                            Clicked="OnConfirmarRentaClicked"
+                            BackgroundColor="Transparent"
+                            TextColor="#C9A84C"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            CharacterSpacing="1.5"/>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

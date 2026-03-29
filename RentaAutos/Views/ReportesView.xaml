@@ -1,0 +1,170 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentaAutos.Views.ReportesView"
+             Title=""
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#080C14">
+
+    <ContentPage.Resources>
+        <LinearGradientBrush x:Key="CardGradient" StartPoint="0,0" EndPoint="0.3,1">
+            <GradientStop Color="#111827" Offset="0.0" />
+            <GradientStop Color="#0D1520" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Resources>
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#080C14" Offset="0.0"/>
+            <GradientStop Color="#0D1420" Offset="0.5"/>
+            <GradientStop Color="#060A12" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="Auto, *">
+
+        <Grid Grid.Row="0" Padding="28,58,28,0" ColumnDefinitions="*,Auto">
+            <VerticalStackLayout Grid.Column="0" Spacing="6">
+                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                    <BoxView WidthRequest="22" HeightRequest="2" VerticalOptions="Center" CornerRadius="1">
+                        <BoxView.Color>
+                            <Color>#C9A84C</Color>
+                        </BoxView.Color>
+                    </BoxView>
+                    <Label Text="EXECUTIVE RECORDS" FontSize="11" FontAttributes="Bold" CharacterSpacing="3" TextColor="#C9A84C"/>
+                </HorizontalStackLayout>
+
+                <Label Text="Historial&#10;de Rentas" FontSize="34" FontAttributes="Bold" LineHeight="1.1" TextColor="#F0F4FF"/>
+                <Label Text="Control y seguimiento de expedientes" FontSize="13" TextColor="#4A5568" Margin="0,2,0,0"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <ScrollView Grid.Row="1" Margin="0,16,0,0">
+            <VerticalStackLayout Padding="0,0,0,30" Spacing="0">
+
+                <Border Stroke="#1A2535" StrokeThickness="1" Padding="20" Margin="24,8,24,10" Background="{StaticResource CardGradient}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22"/>
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#000000" Offset="0,8" Radius="24" Opacity="0.5"/>
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="16">
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <Label Text="✦" TextColor="#C9A84C" FontSize="14" VerticalOptions="Center"/>
+                            <Label Text="FILTROS DE BÚSQUEDA" FontSize="12" FontAttributes="Bold" TextColor="#EDF2FF" CharacterSpacing="1.5"/>
+                        </HorizontalStackLayout>
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="PLACA DEL VEHÍCULO" FontSize="10" FontAttributes="Bold" TextColor="#5A6A80" Margin="4,0" CharacterSpacing="1"/>
+                            <Border Stroke="#1E2A3A" StrokeShape="RoundRectangle 12" BackgroundColor="#060A12" Padding="14,4">
+                                <Entry x:Name="txtFiltroPlaca" Placeholder="Ej. ABC1234" TextColor="#EDF2FF" PlaceholderColor="#3D4F65" BackgroundColor="Transparent" FontSize="15"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10" Margin="4,2,0,0">
+                            <Switch x:Name="swUsarFechas" IsToggled="False" OnColor="#C9A84C" ThumbColor="#F0F4FF"/>
+                            <Label Text="Aplicar filtro por fechas" VerticalOptions="Center" TextColor="#5A6A80" FontSize="14"/>
+                        </HorizontalStackLayout>
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                            <VerticalStackLayout Grid.Column="0" Spacing="6">
+                                <Label Text="DESDE" FontSize="10" FontAttributes="Bold" TextColor="#5A6A80" Margin="4,0" CharacterSpacing="1"/>
+                                <Border Stroke="#1E2A3A" StrokeShape="RoundRectangle 12" BackgroundColor="#060A12" Padding="10,0">
+                                    <DatePicker x:Name="dpFiltroInicio" TextColor="#EDF2FF" BackgroundColor="Transparent" Format="dd/MM/yyyy" FontSize="14"/>
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="6">
+                                <Label Text="HASTA" FontSize="10" FontAttributes="Bold" TextColor="#5A6A80" Margin="4,0" CharacterSpacing="1"/>
+                                <Border Stroke="#1E2A3A" StrokeShape="RoundRectangle 12" BackgroundColor="#060A12" Padding="10,0">
+                                    <DatePicker x:Name="dpFiltroFin" TextColor="#EDF2FF" BackgroundColor="Transparent" Format="dd/MM/yyyy" FontSize="14"/>
+                                </Border>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="15" Margin="0,10,0,0">
+                            <Border Grid.Column="0" Stroke="#1E2A3A" StrokeThickness="1" HeightRequest="48" StrokeShape="RoundRectangle 12" BackgroundColor="Transparent">
+                                <Button Text="LIMPIAR" BackgroundColor="Transparent" TextColor="#5A6A80" FontSize="13" FontAttributes="Bold" CharacterSpacing="1" Clicked="OnLimpiarClicked"/>
+                            </Border>
+                            <Border Grid.Column="1" Stroke="#C9A84C" StrokeThickness="1" HeightRequest="48" StrokeShape="RoundRectangle 12">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#1C1608" Offset="0.0"/>
+                                        <GradientStop Color="#080C14" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.Shadow>
+                                    <Shadow Brush="#C9A84C" Offset="0,2" Radius="10" Opacity="0.25"/>
+                                </Border.Shadow>
+                                <Button Text="BUSCAR" BackgroundColor="Transparent" TextColor="#C9A84C" FontSize="13" FontAttributes="Bold" CharacterSpacing="1" Clicked="OnBuscarClicked"/>
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <CollectionView x:Name="ListaHistorial" BackgroundColor="Transparent" SelectionMode="Single" SelectionChanged="OnRentaSeleccionada">
+
+                    <CollectionView.Header>
+                        <ContentView HeightRequest="10" BackgroundColor="Transparent"/>
+                    </CollectionView.Header>
+
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10" Margin="0,40,0,0">
+                            <Label Text="✦" TextColor="#C9A84C" FontSize="36" HorizontalOptions="Center" Opacity="0.5"/>
+                            <Label Text="No se encontraron registros" TextColor="#5A6A80" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="Intenta ajustar tus filtros de búsqueda" TextColor="#3D4F65" FontSize="13" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="24,0,24,18">
+                                <Border Stroke="#1A2535" StrokeThickness="1" Padding="20" Background="{StaticResource CardGradient}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="22"/>
+                                    </Border.StrokeShape>
+                                    <Border.Shadow>
+                                        <Shadow Brush="#000000" Offset="0,8" Radius="24" Opacity="0.5"/>
+                                    </Border.Shadow>
+
+                                    <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto, Auto">
+                                        <VerticalStackLayout Grid.Column="0" Grid.Row="0" Spacing="4" VerticalOptions="Start">
+                                            <Label Text="{Binding nombre_cliente_ui}" FontSize="18" FontAttributes="Bold" TextColor="#EDF2FF" LineBreakMode="TailTruncation"/>
+                                            <HorizontalStackLayout Spacing="6" Margin="0,2,0,0">
+                                                <Label Text="{Binding auto_marca}" FontSize="13" TextColor="#C9A84C" FontAttributes="Bold" VerticalOptions="Center"/>
+                                                <Label Text="{Binding auto_modelo}" FontSize="13" TextColor="#5A6A80" VerticalOptions="Center" LineBreakMode="TailTruncation" MaxLines="1"/>
+                                            </HorizontalStackLayout>
+                                            <Border Margin="0,6,0,0" BackgroundColor="#060A12" Stroke="#1E2A3A" StrokeThickness="1" StrokeShape="RoundRectangle 6" Padding="8,4" HorizontalOptions="Start">
+                                                <Label Text="{Binding auto_placas}" FontSize="11" TextColor="#8899AA" FontAttributes="Bold" CharacterSpacing="1"/>
+                                            </Border>
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Start" Spacing="2">
+                                            <Label Text="{Binding costo_total, StringFormat='${0:N2}'}" FontSize="22" FontAttributes="Bold" TextColor="#C9A84C" HorizontalOptions="End"/>
+                                            <Label Text="{Binding fecha_registro_renta, StringFormat='Reg: {0:dd/MM/yy}'}" FontSize="11" TextColor="#3D4F65" HorizontalOptions="End"/>
+                                        </VerticalStackLayout>
+
+                                        <BoxView Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1" Color="#1E2A3A" Margin="-20,16,-20,16" Opacity="0.35"/>
+
+                                        <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnDefinitions="Auto, *">
+                                            <Border Grid.Column="0" Stroke="{Binding color_estatus_ui}" BackgroundColor="#060A12" StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="12,6">
+                                                <Label Text="{Binding estatus_renta_ui}" FontSize="10" FontAttributes="Bold" TextColor="{Binding color_estatus_ui}" CharacterSpacing="1"/>
+                                            </Border>
+                                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End" Spacing="6" VerticalOptions="Center">
+                                                <Label Text="{Binding fecha_inicio, StringFormat='{0:dd MMM}'}" FontSize="12" TextColor="#EDF2FF" FontAttributes="Bold"/>
+                                                <Label Text="→" FontSize="14" TextColor="#C9A84C" VerticalOptions="Center"/>
+                                                <Label Text="{Binding fecha_fin, StringFormat='{0:dd MMM}'}" FontSize="12" TextColor="#EDF2FF" FontAttributes="Bold"/>
+                                                <Label Text="{Binding dias_renta, StringFormat='({0} días)'}" FontSize="11" TextColor="#5A6A80" Margin="4,0,0,0" VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

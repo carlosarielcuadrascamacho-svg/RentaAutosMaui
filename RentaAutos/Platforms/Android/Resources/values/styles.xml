@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- Splash theme used by MainActivity. Inherit from MaterialComponents so controls that require
+       a Material TextAppearance (e.g. certain Material-backed controls) work correctly. -->
+  <style name="Maui.SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Keep this simple: use the app primary color as window background for the splash screen. -->
+    <item name="android:windowBackground">@color/colorPrimary</item>
+  </style>
+
+  <!-- Main app theme. Inherit from MaterialComponents as well. -->
+  <style name="Maui.MainTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+</resources>
